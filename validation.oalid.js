@@ -1,5 +1,6 @@
 function js_form_validation(form_id, validation_rules, validation_messages=null) {
-    document.querySelector("#"+form_id).addEventListener("submit",function(e) {
+    document.querySelector("#"+form_id).addEventListener("submit", function(e) {
+
         
         if(validation_messages === null) {
             validation_messages = {};
@@ -14,7 +15,9 @@ function js_form_validation(form_id, validation_rules, validation_messages=null)
         if(typeof validation_rules !== 'undefined') {
             for(field_name in validation_rules)
             {
-                document.getElementsByClassName(field_name+"_error")[0].innerHTML = "";
+                if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = "";
+                }
                 rules = validation_rules[field_name];
                 for(rule_index in rules)
                 {
@@ -64,89 +67,139 @@ function js_form_validation(form_id, validation_rules, validation_messages=null)
             }
         }
         let error_field_full_rules = '';
+        let set_focus = true;
         for(field_name in errors) {
             if(errors[field_name][0] == 'required') {
                 error_field_full_rules = field_name+".required";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required";
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required";
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required";
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required";
+                    }
                 }
             }
             if(errors[field_name][0] == 'email') {
                 error_field_full_rules = field_name+".email";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid email";
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid email";
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid email";
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid email";
+                    }
                 }
             }
             if(errors[field_name][0] == 'url') {
                 error_field_full_rules = field_name+".url";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid url";
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid url";
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid url";
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be a valid url";
+                    }
                 }
             }
             if(errors[field_name][0] == 'min') {
                 error_field_full_rules = field_name+".min";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be greater then "+errors[field_name][1]+" character";
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be greater then "+errors[field_name][1]+" character";
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be greater then "+errors[field_name][1]+" character";
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be greater then "+errors[field_name][1]+" character";
+                    }
                 }
             }
             if(errors[field_name][0] == 'max') {
                 error_field_full_rules = field_name+".max";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be less then or equal "+errors[field_name][1]+" character";
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be less then or equal "+errors[field_name][1]+" character";
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be less then or equal "+errors[field_name][1]+" character";
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be less then or equal "+errors[field_name][1]+" character";
+                    }
                 }
             }
             if(errors[field_name][0] == 'same') {
                 error_field_full_rules = field_name+".same";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be same as " + titleCase(errors[field_name][1]);
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be same as " + titleCase(errors[field_name][1]);
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be same as " + titleCase(errors[field_name][1]);
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" should be same as " + titleCase(errors[field_name][1]);
+                    }
                 }
             }
             if(errors[field_name][0] == 'required_if') {
                 error_field_full_rules = field_name+".required_if";
                 if(typeof validation_messages !== 'undefined') {
                     if(error_field_full_rules in validation_messages) {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = validation_messages[error_field_full_rules];
+                        }
                     } else {
-                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required if " + titleCase(errors[field_name][1]) + " value is " + errors[field_name][2];
+                        if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                            document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required if " + titleCase(errors[field_name][1]) + " value is " + errors[field_name][2];
+                        }
                     }
                 } else {
-                    document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required if " + titleCase(errors[field_name][1]) + " value is " + errors[field_name][2];
+                    if(document.getElementsByClassName(field_name+"_error")[0] != null) {
+                        document.getElementsByClassName(field_name+"_error")[0].innerHTML = titleCase(field_name)+" is required if " + titleCase(errors[field_name][1]) + " value is " + errors[field_name][2];
+                    }
+                }
+            }
+
+            if(set_focus) {
+                if(document.getElementsByName(field_name)[0] != null) {
+                    document.getElementsByName(field_name)[0].focus();
+                    set_focus = false;
                 }
             }
             
@@ -163,30 +216,39 @@ function js_form_validation(form_id, validation_rules, validation_messages=null)
     });
 
     function validation_required(element) {
-        if(document.getElementById(element).value.length > 0) {
-            return true;
-        } else {
-            return false;
+        
+        if(document.getElementsByName(element)[0] != null) {
+            if(document.getElementsByName(element)[0].value.length > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
         return false;
     }
 
     function validation_required_if(field_name, required_if_column_name, required_if_column_value) {
         let required_if_input_column_value  = '';
-        let required_if_input_column_type = document.getElementById(required_if_column_name).type;
-        if((required_if_input_column_type == 'checkbox') || (required_if_input_column_type == 'radio')){
-            if(document.getElementById(required_if_column_name).checked == true) {
-                required_if_input_column_value = document.getElementById(required_if_column_name).value;
+        if(document.getElementsByName(required_if_column_name)[0] != null) {
+            let required_if_input_column_type = document.getElementsByName(required_if_column_name)[0].type;
+            if((required_if_input_column_type == 'checkbox') || (required_if_input_column_type == 'radio')){
+                if(document.getElementsByName(required_if_column_name)[0].checked == true) {
+                    required_if_input_column_value = document.getElementsByName(required_if_column_name)[0].value;
+                } else {
+                    required_if_input_column_value = '';
+                }
             } else {
-                required_if_input_column_value = '';
+                required_if_input_column_value = document.getElementsByName(required_if_column_name)[0].value;
             }
-        } else {
-            required_if_input_column_value = document.getElementById(required_if_column_name).value;
         }
 
         if(required_if_input_column_value == required_if_column_value) {
-            if(document.getElementById(field_name).value.length > 0) {
-                return true;
+            if(document.getElementsByName(field_name)[0] != null) {
+                if(document.getElementsByName(field_name)[0].value.length > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
@@ -207,7 +269,10 @@ function validateUrl(email) {
 }
 
 function validation_email(element) {
-    var email = document.getElementById(element).value;
+    var email = '';
+    if(document.getElementsByName(element)[0] != null) {
+        email = document.getElementsByName(element)[0].value;
+    }
     if (validateEmail(email)) {
         return true;
     } else {
@@ -217,7 +282,10 @@ function validation_email(element) {
 }
 
 function validation_url(element) {
-    var url = document.getElementById(element).value;
+    var url = '';
+    if(document.getElementsByName(element)[0] != null) {
+        url = document.getElementsByName(element)[0].value;
+    }
     if (validateUrl(url)) {
         return true;
     } else {
@@ -227,26 +295,36 @@ function validation_url(element) {
 }
 
 function validation_string_min(element, length) {
-    if(document.getElementById(element).value.length >= length) {
-        return true;
-    } else {
-        return false;
+    if(document.getElementsByName(element)[0] != null) {
+        if(document.getElementsByName(element)[0].value.length >= length) {
+            return true;
+        } else {
+            return false;
+        }
     }
     return false;
 }
 
 function validation_string_max(element, length) {
-    if(document.getElementById(element).value.length <= length) {
-        return true;
-    } else {
-        return false;
+    if(document.getElementsByName(element)[0] != null) {
+        if(document.getElementsByName(element)[0].value.length <= length) {
+            return true;
+        } else {
+            return false;
+        }
     }
     return false;
 }
 
 function validation_same_field(field_1, field_2) {
-    let field_1_val = document.getElementById(field_1).value;
-    let field_2_val = document.getElementById(field_2).value;
+    let field_1_val = '';
+    let field_2_val = ' ';
+    if(document.getElementsByName(field_1)[0] != null) {
+        field_1_val = document.getElementsByName(field_1)[0].value;
+    }
+    if(document.getElementsByName(field_2)[0] != null) {
+        field_2_val = document.getElementsByName(field_2)[0].value;
+    }
     if(field_1_val === field_2_val) {
         return true;
     } else {

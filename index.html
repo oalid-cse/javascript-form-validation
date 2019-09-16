@@ -89,7 +89,7 @@
                         <td>Email</td>
                         <td> : </td>
                         <td>
-                            <input type="email" name="email" id="email" placeholder="Enter Email">
+                            <input type="text" name="email" id="email" placeholder="Enter Email">
                         </td>
                         <td>
                             <span class="email_error text-danger"></span>
@@ -167,19 +167,21 @@
             //     'mobile_number' : ['required_if:is_mobile,1']
             // };
             
-            // let validation_messages = {
-            //     'name.required' : 'Name field is required',
-            //     'name.min' : 'Minimum Character is 10',
-            //     'confirm_password.same' : 'Confirm Password A=A',
-            //     'mobile_number.required_if' : 'Mobile Number is required',
-            // };
             // js_form_validation("validation", validation_rules, validation_messages);
             let validation_rules = {
                 'name' : ['required'],
                 'email' : ['required', 'email'],
-                'website' : ['url']
+                'website' : ['url'],
+                'mobile_number' : ['required_if:is_mobile,1']
             }
-            js_form_validation("validation", validation_rules);
+            
+            let validation_messages = {
+                'name.required' : 'Name field must be required',
+                'mobile_number.required_if' : 'Mobile Field is required',
+            };
+
+            
+            js_form_validation("validation", validation_rules, validation_messages);
         </script>
     </body>
 </html>
