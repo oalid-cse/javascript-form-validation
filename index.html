@@ -181,7 +181,15 @@
             };
 
             
-            js_form_validation("validation", validation_rules, validation_messages);
+            js_form_validation("validation", {
+                'name' : ['required'],
+                'email' : ['required', 'email'],
+                'website' : ['url'],
+                'mobile_number' : ['required_if:is_mobile,1']
+            }, {
+                'name.required' : 'Name field must be required',
+                'mobile_number.required_if' : 'Mobile Field is required',
+            });
         </script>
     </body>
 </html>
